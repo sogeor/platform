@@ -67,7 +67,7 @@ _boot: ; 0:0x600 + _boot
 .readed:
     mov dl, [disk + disk_s.drive]
     mov si, bx
-    jmp _hlt
+    jmp 0x7C00
 
 times 218 - ($ - $$) db 0
 
@@ -127,11 +127,11 @@ endstruc
 
 partition_1:
 istruc partition_s
-at partition_s.status, db 0x80
+at partition_s.status, db 0
 at partition_s.base_chs, db 0, 0, 0
 at partition_s.type, db 0
 at partition_s.end_chs, db 0, 0, 0
-at partition_s.base_lba, dd 1
+at partition_s.base_lba, dd 0
 at partition_s.number_of_sectors, dd 0
 iend
 
