@@ -1,6 +1,8 @@
 bits 16
 org 0x600
 
+; TODO: rewrite it completely
+
 _reloc: ; 0x7C00, relocate to 0:0x600
     xor cx, cx
     mov ds, cx
