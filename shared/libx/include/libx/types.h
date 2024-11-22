@@ -1,9 +1,10 @@
-#ifndef X86_LIBX_TYPES_H
-#define X86_LIBX_TYPES_H
+#ifndef LIBX_TYPES_H
+#define LIBX_TYPES_H
 
 #include <stdint.h>
 
 // signed integers
+
 typedef int8_t i8;
 typedef int16_t i16;
 typedef int32_t i32;
@@ -19,6 +20,7 @@ typedef int64_t i64;
 #define I64_MAX 9223372036854775807i64
 
 // unsigned integers
+
 typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
@@ -30,13 +32,23 @@ typedef uint64_t u64;
 #define U64_MAX 18446744073709551615ui64
 
 // chars
+
 typedef u8 c8;
 typedef u16 c16;
 typedef u32 c32;
 typedef u64 c64;
 
 // others
-typedef void* ptr;
+
+typedef void *ptr;
+typedef const void *ptrc;
+typedef void *const cptr;
+typedef const void *const cptrc;
 typedef u8 bl;
 
-#endif // X86_LIBX_TYPES_H
+#define PTR_NULL (ptr) 0
+#define PTRC_NULL (ptrc) 0
+#define CPTR_NULL (cptr) 0
+#define CPTRC_NULL (cptrc) 0
+
+#endif // LIBX_TYPES_H
