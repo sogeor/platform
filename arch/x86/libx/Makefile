@@ -1,12 +1,13 @@
-X86 ?= ../
+X86 ?= ..
 X86_LIBX ?= $(X86)/libx
+
+SHARED ?= ../../../shared
+SHARED_LIBX ?= $(SHARED)/libx
 
 CFLAGS ?=
 CFLAGS += -I "$(X86_LIBX)/include"
-OBJECTS ?=
 
-x86_libx_cpuid ?= excluded
-ifeq ($(x86_libx_cpuid), included)
-CFLAGS += -I "$(X86_LIBX)/cpuid/include"
-OBJECTS += $(wildcard $(X86_LIBX)/cpuid/*.c)
-endif
+OBJECTS ?=
+OBJECTS += $(addsuffix .o,$(wildcard $(X86_LIBX)/*.nasm) $(wildcard $(X86_LIBX)/*.c))
+
+include $(SHARED_LIBX)/Makefile

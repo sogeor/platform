@@ -1,5 +1,5 @@
-#ifndef X86_LIBX_CPUID_H
-#define X86_LIBX_CPUID_H
+#ifndef LIBX_X86_CPUID_H
+#define LIBX_X86_CPUID_H
 
 #include <libx/types.h>
 
@@ -7,4 +7,4 @@
 
 extern i8 cpuid_test; // TODO: remove it
 
-#endif // X86_LIBX_CPUID_H
+#endif // LIBX_X86_CPUID_H
