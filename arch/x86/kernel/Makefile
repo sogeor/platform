@@ -6,7 +6,7 @@ SHARED ?= ../../../shared
 SHARED_KERNEL ?= $(SHARED)/kernel
 
 CFLAGS ?=
-CFLAGS += -I "$(X86_KERNEL)/include"
+CFLAGS += -std=c99 -D BITS32 -I "$(X86_KERNEL)/include"
 
 OBJECTS ?=
 OBJECTS += $(addsuffix .o,$(wildcard $(X86_KERNEL)/*.nasm) $(wildcard $(X86_KERNEL)/*.c))
