@@ -1,14 +1,15 @@
 #ifndef LIBX_TYPES_H
 #define LIBX_TYPES_H
 
-#include <stdint.h>
+#include <libx/defs.h>
 
 // signed integers
 
-typedef int8_t i8;
-typedef int16_t i16;
-typedef int32_t i32;
-typedef int64_t i64;
+typedef signed char i8;
+typedef signed short int i16;
+typedef signed long int i32;
+typedef signed long long int i64;
+typedef BITS_SWITCH(i32, i64) imax;
 
 #define I8_MIN -128i8
 #define I8_MAX 127i8
@@ -21,10 +22,11 @@ typedef int64_t i64;
 
 // unsigned integers
 
-typedef uint8_t u8;
-typedef uint16_t u16;
-typedef uint32_t u32;
-typedef uint64_t u64;
+typedef unsigned char u8;
+typedef unsigned short int u16;
+typedef unsigned long int u32;
+typedef unsigned long long int u64;
+typedef BITS_SWITCH(u32, u64) umax;
 
 #define U8_MAX 255ui8
 #define U16_MAX 65535ui16
@@ -36,19 +38,27 @@ typedef uint64_t u64;
 typedef u8 c8;
 typedef u16 c16;
 typedef u32 c32;
-typedef u64 c64;
 
-// others
+#define C_CR 0x0D
+#define C_LF 0x0A
+
+// ptrs
 
 typedef void *ptr;
 typedef const void *ptrc;
 typedef void *const cptr;
 typedef const void *const cptrc;
-typedef u8 bl;
 
-#define PTR_NULL (ptr) 0
-#define PTRC_NULL (ptrc) 0
-#define CPTR_NULL (cptr) 0
-#define CPTRC_NULL (cptrc) 0
+#define NULL_PTR ((ptr) 0)
+#define NULL_PTRC ((ptrc) 0)
+#define NULL_CPTR ((cptr) 0)
+#define NULL_CPTRC ((cptrc) 0)
+
+// results
+
+typedef u8 r8;
+typedef u16 r16;
+typedef u32 r32;
+typedef u64 r64;
 
 #endif // LIBX_TYPES_H
