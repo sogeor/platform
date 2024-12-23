@@ -1,8 +1,8 @@
 #include <libx/memory.h>
 
-void mem_set(void *RESTRICT dst, const u8 value, umax count)
+void mem_set(const ptr dst, const u8 value, umax count)
 {
-    if (count == 0) return;
+    if (!count) return;
     do
     {
         --count;
@@ -10,9 +10,9 @@ void mem_set(void *RESTRICT dst, const u8 value, umax count)
     } while (count);
 }
 
-r8 mem_copy(void *RESTRICT dst, const void *RESTRICT src, umax count)
+r8 mem_copy(const ptr dst, const ptrc src, umax count)
 {
-    if (count == 0) return 0;
+    if (!count) return 0;
     if (src <= dst && src + count > dst || src >= dst && src < dst + count) return 1;
     do
     {
@@ -22,9 +22,9 @@ r8 mem_copy(void *RESTRICT dst, const void *RESTRICT src, umax count)
     return 0;
 }
 
-r8 mem_move(void *RESTRICT dst, void *RESTRICT src, const u8 value, umax count)
+r8 mem_move(const ptr dst, const ptr src, const u8 value, umax count)
 {
-    if (count == 0) return 0;
+    if (!count) return 0;
     if (src <= dst && src + count > dst || src >= dst && src < dst + count) return 1;
     do
     {
