@@ -44,15 +44,11 @@ typedef u32 c32;
 
 // ptrs
 
-typedef void *ptr;
-typedef const void *ptrc;
-typedef void *const cptr;
-typedef const void *const cptrc;
+typedef void *RESTRICT ptr;
+typedef const void *RESTRICT ptrc;
 
 #define NULL_PTR ((ptr) 0)
 #define NULL_PTRC ((ptrc) 0)
-#define NULL_CPTR ((cptr) 0)
-#define NULL_CPTRC ((cptrc) 0)
 
 // results
 
