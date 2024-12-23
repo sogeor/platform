@@ -26,7 +26,7 @@ r8 str8_move(const str8 dst, const str8 src, const c8 value, const umax dst_offs
 r8 str16_set(const str16 dst, const c16 value, const umax offset, umax count)
 {
     if (offset + count > dst.length) return 1;
-    if (count == 0) return 0;
+    if (!count) return 0;
     do
     {
         --count;
@@ -53,7 +53,7 @@ r8 str16_move(const str16 dst, const str16 src, const c16 value, const umax dst_
 r8 str32_set(const str32 dst, const c32 value, const umax offset, umax count)
 {
     if (offset + count > dst.length) return 1;
-    if (count == 0) return 0;
+    if (!count) return 0;
     do
     {
         --count;
