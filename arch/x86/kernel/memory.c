@@ -1,28 +1,20 @@
-#include <kernel/x86/memory.h>
+#include <kernel/memory.h>
+#include <libx/x86/mmu.h>
 
-static ptr allocate_aligned(u64 alignment, u64 size)
+// TODO: Написать менеджер памяти.
+// TODO: Удалить заглушки.
+
+void *memory_allocate_unaligned(umax count)
 {
-    // TODO: do it
-    return PTR_NULL;
+    return NULL;
 }
 
-static ptr allocate_unaligned(u64 size)
+void *memory_allocate_aligned(umax count, umax alignment)
 {
-    // TODO: do it
-    return PTR_NULL;
+    return NULL;
 }
 
-static ptr allocate_reallocate(ptr memory, u64 size)
+r8 memory_free(void *ptr)
 {
-    // TODO: do it
-    return PTR_NULL;
+    return 1;
 }
-
-static void free(ptr memory)
-{
-    // TODO: do it
-}
-
-const struct memory_subsystem x86_memory = {
-    &allocate_aligned, &allocate_unaligned, &allocate_reallocate, &free
-};
