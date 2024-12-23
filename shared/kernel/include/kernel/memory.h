@@ -1,22 +1,38 @@
 #ifndef KERNEL_MEMORY_H
 #define KERNEL_MEMORY_H
 
-#include <libx/defs.h>
-
-struct memory_subsystem;
-TYPEDEF_PTR(struct memory_subsystem, memory_subsystem_ptr);
-TYPEDEF_PTRC(struct memory_subsystem, memory_subsystem_ptrc);
-TYPEDEF_CPTR(struct memory_subsystem, memory_subsystem_cptr);
-TYPEDEF_CPTRC(struct memory_subsystem, memory_subsystem_cptrc);
-
 #include <libx/types.h>
 
-struct memory_subsystem
-{
-    ptr (*const allocate_aligned)(u64 alignment, u64 size);
-    ptr (*const allocate_unaligned)(u64 size);
-    ptr (*const allocate_reallocate)(ptr memory, u64 size);
-    void (*const free)(ptr memory);
-};
+/*!
+ * \brief Выделяет целевую область памяти — количество \code count\endcode байт.
+ * \code
+ * ptr dst = memory_allocate_unaligned(1024);
+ * \endcode
+ * \param[in] count Количество байт, которое необходимо выделить.
+ * \return \code NULL_RPTR\endcode — недостаточно свободной области памяти; \code ?\endcode — целевая область памяти.
+ */
+rptr memory_allocate_unaligned(umax count);
+
+/*!
+ * \brief Выделяет целевую область памяти — выровненное по \code aligment\endcode количество \code count\endcode байт.
+ * \code
+ * ptr dst = memory_allocate_aligned(1024, 4096);
+ * \endcode
+ * \param[in] count Количество байт, которое необходимо выделить.
+ * \param[in] alignment Количество байт, по которым необходимо выровнять.
+ * \return \code NULL_RPTR\endcode — недостаточно свободной области памяти; \code ?\endcode — целевая область памяти.
+ */
+rptr memory_allocate_aligned(umax count, umax alignment);
+
+/*!
+ * \brief Освобождает \code dst\endcode.
+ * \code
+ * ptr dst;
+ * memory_free(dst);
+ * \endcode
+ * \param[in] dst Целевая область памяти.
+ * \return \code 0\endcode — успешно; \code 1\endcode — некорректная целевая область памяти.
+ */
+r8 memory_free(ptr dst);
 
 #endif // KERNEL_MEMORY_H
