@@ -28,7 +28,7 @@ void mem_set(ptr dst, u8 value, umax count);
  * \param[in] count Количество байт, которое необходимо скопировать.
  * \return \code 0\endcode — успешно; \code 1\endcode — \code dst\endcode и \code src\endcode пересекаются.
  */
-r8 mem_copy(ptr dst, ptrc src, umax count);
+r8 mem_copy(rptr dst, rptrc src, umax count);
 
 /*!
  * \brief Копирует \code count\endcode байт из \code src\endcode в \code dst\endcode и заменяет \code count\endcode байт в \code src\endcode на \code value\endcode.
@@ -43,6 +43,6 @@ r8 mem_copy(ptr dst, ptrc src, umax count);
  * \param[in] count Количество байт, которое необходимо скопировать.
  * \return \code 0\endcode — успешно; \code 1\endcode — \code dst\endcode и \code src\endcode пересекаются.
  */
-r8 mem_move(ptr dst, ptr src, u8 value, umax count);
+r8 mem_move(rptr dst, rptr src, u8 value, umax count);
 
 #endif // LIBX_MEMORY_H
