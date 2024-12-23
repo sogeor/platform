@@ -42,18 +42,6 @@ typedef u32 c32;
 #define C_CR 0x0D
 #define C_LF 0x0A
 
-// ptrs
-
-typedef void *ptr;
-typedef const void *ptrc;
-typedef void *RESTRICT rptr;
-typedef const void *RESTRICT rptrc;
-
-#define NULL_PTR ((ptr) 0)
-#define NULL_PTRC ((ptrc) 0)
-#define NULL_RPTR ((rptr) 0)
-#define NULL_RPTRC ((rptrc) 0)
-
 // results
 
 typedef u8 r8;
