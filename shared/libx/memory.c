@@ -10,7 +10,7 @@ void mem_set(const ptr dst, const u8 value, umax count)
     } while (count);
 }
 
-r8 mem_copy(const ptr dst, const ptrc src, umax count)
+r8 mem_copy(const rptr dst, const rptrc src, umax count)
 {
     if (!count) return 0;
     if (src <= dst && src + count > dst || src >= dst && src < dst + count) return 1;
@@ -22,7 +22,7 @@ r8 mem_copy(const ptr dst, const ptrc src, umax count)
     return 0;
 }
 
-r8 mem_move(const ptr dst, const ptr src, const u8 value, umax count)
+r8 mem_move(const rptr dst, const rptr src, const u8 value, umax count)
 {
     if (!count) return 0;
     if (src <= dst && src + count > dst || src >= dst && src < dst + count) return 1;
