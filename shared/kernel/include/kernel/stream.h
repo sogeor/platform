@@ -53,16 +53,16 @@ typedef struct stream
 
 /*!
  * \brief Открывает поток с уникальным дескриптором.
- * \return \code NULL_RPTR\endcode — недостаточно свободной области памяти; \code ?\endcode — успешно.
+ * \return \code NULL\endcode — недостаточно свободной области памяти; \code ?\endcode — успешно.
  */
-stream_t *RESTRICT stream_open();
+stream_t *stream_open();
 
 /*!
  * \brief Закрывает \code stream\endcode.
  * \param[in] stream Поток, который необходимо закрыть.
  * \return \code 0\endcode — успешно; \code 1\endcode — некорректный поток; \code 2\endcode — поток уже закрыт.
  */
-r8 stream_close(stream_t *RESTRICT stream);
+r8 stream_close(stream_t *stream);
 
 /*!
  * \brief Возвращает количество открытых потоков.
