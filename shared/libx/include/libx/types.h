@@ -39,9 +39,6 @@ typedef u8 c8;
 typedef u16 c16;
 typedef u32 c32;
 
-#define C_CR 0x0D
-#define C_LF 0x0A
-
 // results
 
 typedef u8 r8;
