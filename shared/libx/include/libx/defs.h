@@ -26,4 +26,6 @@
 #endif
 #endif
 
+#define NULL (void*) 0
+
 #endif // LIBX_DEFS_H
