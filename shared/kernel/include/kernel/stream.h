@@ -48,8 +48,7 @@ typedef struct stream
      * \return \code 0\endcode — успешно; \code 1\endcode — поток закрыт для чтения.
      */
     r8 (*read_buffer)(u8 *buffer, umax count);
-}
-    ATTRIBUTE_PACKED stream_t;
+} stream_t;
 
 /*!
  * \brief Открывает поток с уникальным дескриптором.
