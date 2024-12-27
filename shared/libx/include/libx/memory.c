@@ -1,4 +1,4 @@
-#include <libx/memory.h>
+#include <memory.h>
 
 r8 memory_set(void *dst, const u8 value, umax count)
 {

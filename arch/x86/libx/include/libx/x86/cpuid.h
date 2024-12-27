@@ -3,8 +3,6 @@
 
 #include <libx/types.h>
 
-// TODO: cpuid
-
-extern i8 cpuid_test; // TODO: remove it
+void cpuid(int code, u32 *eax, u32 *edx);
 
 #endif // LIBX_X86_CPUID_H

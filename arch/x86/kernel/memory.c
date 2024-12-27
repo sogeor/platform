@@ -4,6 +4,8 @@
 // TODO: Написать менеджер памяти.
 // TODO: Удалить заглушки.
 
+#include <libx/charset/utf8.h>
+
 void *memory_allocate_unaligned(umax count)
 {
     return NULL;
