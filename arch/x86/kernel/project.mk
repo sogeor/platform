@@ -1,0 +1,25 @@
+ROOT ?= ../../..
+ARCH ?= $(ROOT)/arch
+X86 ?= $(ARCH)/x86
+SHARED ?= $(ROOT)/shared
+
+X86_LIBK ?= $(X86)/libk
+include $(X86_LIBK)/library.mk
+
+SHARED_KERNEL ?= $(SHARED)/kernel
+include $(SHARED_KERNEL)/library.mk
+
+include $(SHARED)/make/object.mk
+X86_KERNEL ?= $(X86)/kernel
+X86_KERNEL_IMAGE ?= $(X86_KERNEL)/kernel.img
+X86_KERNEL_INCLUDE ?= $(X86_KERNEL)/include
+X86_KERNEL_NASM_FLAGS ?= -f elf32 -D BITS32 -i $(X86_KERNEL_INCLUDE) $(X86_LIBK_NASM_FLAGS) $(SHARED_KERNEL_NASM_FLAGS)
+X86_KERNEL_NASM_OBJECTS ?= $(call object_prepare_nasm,$(X86_KERNEL_INCLUDE),$(X86_LIBK_NASM_OBJECTS) $(SHARED_KERNEL_NASM_OBJECTS))
+X86_KERNEL_GCC_FLAGS ?= -std=gnu99 -Werror -O0 -nostdinc -ffreestanding -m32 -D BITS32 -c -I $(X86_KERNEL_INCLUDE) $(X86_LIBK_GCC_FLAGS) $(SHARED_KERNEL_GCC_FLAGS)
+X86_KERNEL_C_OBJECTS ?= $(call object_prepare_c,$(X86_KERNEL_INCLUDE),$(X86_LIBK_C_OBJECTS) $(SHARED_KERNEL_C_OBJECTS))
+X86_KERNEL_LD_FLAGS ?= -T $(X86_KERNEL)/script.ld -nostdlib $(X86_LIBK_LD_FLAGS) $(SHARED_KERNEL_LD_FLAGS)
+X86_KERNEL_LD_OBJECTS ?= $(X86_KERNEL_NASM_OBJECTS) $(X86_KERNEL_C_OBJECTS)
+
+include $(X86)/make/toolchain.mk
+
+X86_KERNEL_INDEX ?= $(X86_KERNEL)/compile_commands.json
