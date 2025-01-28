@@ -1,6 +1,8 @@
+# IntelliJ IDEA
 .idea/
 
-*.bin
-*.o
-*.obj
-*.img
+# Cargo
+target/
+
+# Misc
+legacy/
