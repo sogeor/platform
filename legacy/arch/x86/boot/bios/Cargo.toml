@@ -1,0 +1,11 @@
+[package]
+name = "platform-x86-boot-bios"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+platform-x86-boot = { path = ".." }
+
+[workspace]
+resolver = "2"
+members = ["start"]

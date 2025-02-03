@@ -1,0 +1,7 @@
+[package]
+name = "platform-x86-boot-bios-start"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+platform-x86-boot-bios = { path = ".." }
